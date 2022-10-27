@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Da-um-Help",
+    "slug": "Da-um-Help",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "57e69ee2-0d00-4a69-9ee2-068fb7b77da5"
+      }
+    }
+  }
+}
