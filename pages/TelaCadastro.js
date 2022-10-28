@@ -8,12 +8,12 @@ export default function TelaCadastro({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [verifSenha, setVerifSenha] = useState('');
   const [cpf, setCpf] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [idade, setIdade] = useState('');
   const [nomeDoador, setNomeDoador] = useState();
   const [telefone, setTelefone] = useState();
 
+  console.log(nomeDoador);
 
   /*const handleChangeValues = (value) => {
     setValues((prevValue) =>({
@@ -26,15 +26,15 @@ export default function TelaCadastro({ navigation }) {
   function cadastraUser() {
     async function cadastro() {
       try {
-        const resultado = await Axios.post("https://da-um-help.glitch.me/registerUser", {
+        const resultado = await Axios.post("https://da-um-help.glitch.me/", {
           EmailDoador: email,
           NomeDoador: nomeDoador,
-          idade: dataNascimento,
-          CPF: cpf,
+          idade: idade,
+          Cpf: cpf,
           Telefone: telefone,
           Senha: senha,
-        })
-
+        });
+       
         const { data } = resultado
 
         console.log(data)
@@ -47,8 +47,11 @@ export default function TelaCadastro({ navigation }) {
     cadastro()
   }
 
+  
+
 
   return (
+  
 
     <View style={styles.center}>
 
@@ -76,28 +79,16 @@ export default function TelaCadastro({ navigation }) {
         >
         </TextInput>
       </View>
-
-      <View style={styles.inputbox}>
-        <TextInput style={styles.txtInput}
-          placeholder="Insira sua senha"
-          id="senha"
-          name="senha"
-          type="password"
-          onChangeText={value => setSenha(value)}
-        >
-        </TextInput>
-      </View>
-
+      
       <View style={styles.inputbox}>
         <TextInput
           style={styles.txtInput}
-          placeholder="Repita sua senha"
-          keyboardType="password"
-          onChangeText={value => setVerifSenha(value)}
+          placeholder="Informe sua idade"
+          keyboardType="text"
+          onChangeText={value => setIdade(value)}
         >
         </TextInput>
       </View>
-
 
       <View style={styles.inputbox}>
         <TextInput
@@ -112,21 +103,24 @@ export default function TelaCadastro({ navigation }) {
       <View style={styles.inputbox}>
         <TextInput
           style={styles.txtInput}
-          placeholder="Informe sua data de nascimento"
-          keyboardType="text"
-          onChangeText={value => setDataNascimento(value)}
-        >
-        </TextInput>
-      </View>
-      <View style={styles.inputbox}>
-        <TextInput
-          style={styles.txtInput}
           placeholder="Informe seu Telefone"
           keyboardType="text"
           onChangeText={value => setTelefone(value)}
         >
         </TextInput>
       </View>
+
+      <View style={styles.inputbox}>
+        <TextInput style={styles.txtInput}
+          placeholder="Insira sua senha"
+          id="senha"
+          name="senha"
+          type="password"
+          onChangeText={value => setSenha(value)}
+        >
+        </TextInput>
+      </View>
+    
 
       <TouchableOpacity style={styles.btnCadastro} onPress={() => {
         cadastraUser(); navigation.navigate("Tabs")
